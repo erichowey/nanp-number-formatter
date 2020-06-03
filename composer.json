@@ -1,0 +1,22 @@
+{
+  "name": "erichowey/nanp-number-formatter",
+  "description": "Take a NANP phone number and return it in a variety of formats.",
+  "keywords": [
+    "nanp",
+    "phone",
+    "number",
+    "format",
+    "formatter"
+  ],
+  "homepage": "https://github.com/erichowey/nanp-number-formatter",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Eric Howey",
+      "email": "eric@talkroute.com"
+    }
+  ],
+  "require": {
+    "php" : "^7.2"
+  }
+}
