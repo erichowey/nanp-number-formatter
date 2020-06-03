@@ -20,11 +20,11 @@ class NanpNumberFormatter
      * This takes a number of different nanp number inputs and returns
      * a variety of formatted nanp numbers.
      *
-     * @param $number The phone number to be formatted
+     * @param string $number The phone number to be formatted
      *
      * @return $this
      */
-    public function parse($number)
+    public function parse(string $number)
     {
         // If the string is less then 10 characters
         if (strlen($number) < 10) {
@@ -96,11 +96,11 @@ class NanpNumberFormatter
      * This takes a number of different nanp number inputs and returns
      * a variety of formatted nanp numbers.
      *
-     * @param $number The phone number to be formatted
+     * @param string $number The phone number to be formatted
      *
      * @return static
      */
-    public static function format($number)
+    public static function format(string $number)
     {
         $self = new static;
         $self->parse($number);
