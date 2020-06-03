@@ -1,6 +1,6 @@
 # Format a NANP Phone Number
 
-This utility take a NANP (North American Numbering Plan) phone number, parses it and returns the number in a variety of formats. 
+This utility takes a NANP (North American Numbering Plan) phone number, parses it and returns the number in a variety of formats. 
 
 ## Install
 You can install this package via composer
