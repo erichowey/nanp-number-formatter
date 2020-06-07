@@ -16,6 +16,7 @@ class NanpNumberFormatter
     public $elevendigit;
     public $uri;
 
+
     function __construct()
     {
         $this->errorMessage = "";
@@ -29,6 +30,20 @@ class NanpNumberFormatter
         $this->tendigit = "Invalid";
         $this->elevendigit = "Invalid";
         $this->uri = "Invalid";
+    }
+
+    /**
+     * Remaps all letters to the corresponding telephone keypad numbers
+     *
+     * @param string $number
+     * @return string
+     */
+    private function lettersToNumbers(string $number)
+    {
+        $number = strtolower($number);
+        $from = 'abcdefghijklmnopqrstuvwxyz';
+        $to = '22233344455566677778889999';
+        return strtr($number, $from, $to);
     }
 
     /**
@@ -47,6 +62,9 @@ class NanpNumberFormatter
             $this->errorMessage = $number . " is less than 10 characters";
             return $this;
         }
+
+        // Convert all letters to numbers
+        $number = $this->lettersToNumbers($number);
 
         // If the string contains any other characters except 0-9, (, ), -, ., +, or space
         if (!preg_match('/^[- 0-9().+]*$/', $number)) {

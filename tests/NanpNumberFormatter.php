@@ -69,7 +69,24 @@ class NanpNumberFormatterTest extends TestCase
         }
     }
 
-    public function lessThan10Characters()
+    public function testLetterInput()
+    {
+        $number = NanpNumberFormatter::format("1800FLOWERS");
+        $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
+        $this->assertEquals("", $number->errorMessage, "errorMessage should be an empty string");
+        $this->assertEquals(true, $number->isValid, "isValid is not true for a valid number");
+        $this->assertEquals("+18003569377", $number->e164, "e164 is invalid");
+        $this->assertEquals("8003569377", $number->tendigit, "The tendigit value is incorrect");
+        $this->assertEquals("18003569377", $number->elevendigit, "The elevendigit value is incorrect");
+        $this->assertEquals("tel:+18003569377", $number->uri, "The uri value is incorrect");
+        $this->assertEquals("(800) 356-9377", $number->nationalFormat, "The nationalFormat value is incorrect");
+        $this->assertEquals("+1 800 356 9377", $number->internationalFormat, "The internationalFormat value is incorrect");
+        $this->assertEquals("800", $number->npa, "The npa value is incorrect");
+        $this->assertEquals("356", $number->nxx, "The nxx value is incorrect");
+        $this->assertEquals("9377", $number->line, "The line value is incorrect");
+    }
+
+    public function testLessThan10Characters()
     {
         $number = NanpNumberFormatter::format("15235");
         $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
@@ -87,7 +104,7 @@ class NanpNumberFormatterTest extends TestCase
     }
 
     // If the string contains any other characters except 0-9, (, ), -, ., +, or space
-    public function invalidCharacters()
+    public function testInvalidCharacters()
     {
         $number = NanpNumberFormatter::format("1212555^123");
         $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
@@ -104,7 +121,7 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals("Invalid", $number->line, "The line value is incorrect");
     }
 
-    public function nonNANPNumber()
+    public function testNonNANPNumber()
     {
         $number = NanpNumberFormatter::format("+023212555123");
         $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
@@ -121,7 +138,7 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals("Invalid", $number->line, "The line value is incorrect");
     }
 
-    public function numberTooLong()
+    public function testNumberTooLong()
     {
         $number = NanpNumberFormatter::format("+13125550123456");
         $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
@@ -138,11 +155,11 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals("Invalid", $number->line, "The line value is incorrect");
     }
 
-    public function nonNXXNXXXXXX()
+    public function testNonNXXNXXXXXX()
     {
         $number = NanpNumberFormatter::format("2121321234");
         $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
-        $this->assertEquals("The number needs to match the +1NXXNXXXXXX pattern: 2121321234", $number->errorMessage, "errorMessage is incorrect");
+        $this->assertEquals("The number needs to match the +1NXXNXXXXXX pattern: +12121321234", $number->errorMessage, "errorMessage is incorrect");
         $this->assertEquals(false, $number->isValid, "isValid is not false for an invalid number");
         $this->assertEquals("Invalid", $number->e164, "e164 is incorrect");
         $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
