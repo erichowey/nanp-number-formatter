@@ -14,6 +14,7 @@ You can install this package via composer
 - Parenthesis `(212) 555-0123`
 - Dot `212.555.0123`
 - Space `212 555 0123`
+- Letters `1800FLOWERS`
 
 etc...
 
@@ -44,4 +45,9 @@ echo $number->npa; // 212
 echo $number->nxx; // 555
 echo $number->line; // 0123
 ...
+```
+
+## Testing
+```
+./vendor/bin/phpunit tests/NanpNumberFormatter.php
 ```
