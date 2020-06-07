@@ -19,9 +19,17 @@
   "require": {
     "php" : "^7.2"
   },
+  "require-dev": {
+    "phpunit/phpunit" : "^8.0"
+  },
   "autoload": {
     "psr-4": {
       "Erichowey\\NanpNumberFormatter\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Spatie\\ArrayToXml\\Test\\": "tests"
     }
   }
 }

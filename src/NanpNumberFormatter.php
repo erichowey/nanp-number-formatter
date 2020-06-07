@@ -16,6 +16,21 @@ class NanpNumberFormatter
     public $elevendigit;
     public $uri;
 
+    function __construct()
+    {
+        $this->errorMessage = "";
+        $this->isValid = false;
+        $this->e164 = "Invalid";
+        $this->npa = "Invalid";
+        $this->nxx = "Invalid";
+        $this->line = "Invalid";
+        $this->nationalFormat = "Invalid";
+        $this->internationalFormat = "Invalid";
+        $this->tendigit = "Invalid";
+        $this->elevendigit = "Invalid";
+        $this->uri = "Invalid";
+    }
+
     /**
      * This takes a number of different nanp number inputs and returns
      * a variety of formatted nanp numbers.
