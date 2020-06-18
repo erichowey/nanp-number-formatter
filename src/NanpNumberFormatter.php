@@ -46,15 +46,15 @@ class NanpNumberFormatter
         return strtr($number, $from, $to);
     }
 
-    /**
-     * This takes a number of different nanp number inputs and returns
-     * a variety of formatted nanp numbers.
-     *
-     * @param string $number The phone number to be formatted
-     *
-     * @return $this
-     */
-    public function parse(string $number)
+  /**
+   * This takes a number of different nanp number inputs and returns
+   * a variety of formatted nanp numbers.
+   *
+   * @param string $number The phone number to be formatted
+   * @param bool $wildcards
+   * @return $this
+   */
+    public function parse(string $number, bool $wildcards = false)
     {
         // If the string is less then 10 characters
         if (strlen($number) < 10) {
@@ -66,8 +66,15 @@ class NanpNumberFormatter
         // Convert all letters to numbers
         $number = $this->lettersToNumbers($number);
 
-        // If the string contains any other characters except 0-9, (, ), -, ., +, or space
-        if (!preg_match('/^[- 0-9().+]*$/', $number)) {
+        if ($wildcards === true) {
+          // If the string contains any other characters except 0-9, (, ), -, ., +, * or space
+          $characterPattern = '/^[- 0-9().+*]*$/';
+        } else {
+          // If the string contains any other characters except 0-9, (, ), -, ., +, or space
+          $characterPattern = '/^[- 0-9().+]*$/';
+        }
+
+        if (!preg_match($characterPattern, $number)) {
             $this->isValid = false;
             $this->errorMessage = $number . " contains invalid characters";
             return $this;
@@ -92,8 +99,15 @@ class NanpNumberFormatter
             $number = "+" . $number;
         }
 
-        // If the first number starts with '[2-9]', then append '+1'
-        if (preg_match('/^[2-9]/', $number)) {
+      if ($wildcards === true) {
+        // If the first number starts with '2-9' or '*', then append '+1'
+        $firstNumberPattern = '/^[2-9*]/';
+      } else {
+        // If the first number starts with '2-9', then append '+1'
+        $firstNumberPattern = '/^[2-9]/';
+      }
+
+        if (preg_match($firstNumberPattern, $number)) {
             $number = "+1" . $number;
         }
 
@@ -104,8 +118,15 @@ class NanpNumberFormatter
             return $this;
         }
 
+      if ($wildcards === true) {
+        // The number should be in the +1NXXNXXXXXX pattern. N is 2-9. '*' is also allowed for wildcards
+        $numberPattern = '/^\+1[2-9*][0-9*]{2}[2-9*][0-9*]{6}$/';
+      } else {
         // The number should be in the +1NXXNXXXXXX pattern. N is 2-9
-        if (!preg_match('/^\+1[2-9][0-9]{2}[2-9][0-9]{6}$/', $number)) {
+        $numberPattern = '/^\+1[2-9][0-9]{2}[2-9][0-9]{6}$/';
+      }
+
+        if (!preg_match($numberPattern, $number)) {
             $this->isValid = false;
             $this->errorMessage = 'The number needs to match the +1NXXNXXXXXX pattern: ' . $number;
             return $this;
@@ -125,18 +146,18 @@ class NanpNumberFormatter
         return $this;
     }
 
-    /**
-     * This takes a number of different nanp number inputs and returns
-     * a variety of formatted nanp numbers.
-     *
-     * @param string $number The phone number to be formatted
-     *
-     * @return static
-     */
-    public static function format(string $number)
+  /**
+   * This takes a number of different nanp number inputs and returns
+   * a variety of formatted nanp numbers.
+   *
+   * @param string $number The phone number to be formatted
+   * @param bool $wildcards
+   * @return static
+   */
+    public static function format(string $number, bool $wildcards = false)
     {
         $self = new static;
-        $self->parse($number);
+        $self->parse($number, $wildcards);
         return $self;
     }
 }
