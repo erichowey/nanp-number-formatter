@@ -47,6 +47,24 @@ echo $number->line; // 0123
 ...
 ```
 
+## Wildcards
+Historically, NANP telephone number wildcards have been represented with the following characters: `X` for 0-9, `N` 
+for 2-9 and occasionally `Y` for 1-9 in dialplan matching. Since this tool accepts letter input, these wildcard 
+characters cannot be used. To utilize wildcard characters, set the second parameter of the `format()` method to `true`. 
+Use `*` to represent a wildcard character.
+```php
+$number = NanpNumberFormatter::format("(212) 555-****", true);
+```
+
+## Errors
+The `NanpNumberFormatter` object has the following parameters: `(bool) isValid` and `(string) errorMessage`. This tool 
+does not throw exceptions, however, the `isValid` parameter will be `false` if it determines that the given number 
+is invalid.
+
+## Contributing
+Contributions are welcome. Criticism is even more welcome. You're welcome to submit a PR or open an issue. Please 
+conform to PSR-12 standards and create tests for your PR.
+
 ## Testing
 ```
 ./vendor/bin/phpunit tests/NanpNumberFormatter.php
