@@ -66,6 +66,7 @@ Contributions are welcome. Criticism is even more welcome. You're welcome to sub
 conform to PSR-12 standards and create tests for your PR.
 
 ## Testing
+Run
 ```
-./vendor/bin/phpunit tests/NanpNumberFormatter.php
+./vendor/bin/phpunit
 ```
