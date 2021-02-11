@@ -9,6 +9,30 @@ class NanpNumberFormatterTest extends TestCase
      * @return void
      * @test
      */
+    public function testEmpty()
+    {
+        $testNumbers = [
+          "",
+          null,
+        ];
+
+        foreach ($testNumbers as $testNumber) {
+            $number = NanpNumberFormatter::format($testNumber);
+            $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
+            $this->assertEquals("The number parameter is required", $number->errorMessage, "errorMessage is incorrect");
+            $this->assertEquals(false, $number->isValid, "isValid is not false for an invalid number");
+            $this->assertEquals("Invalid", $number->e164, "e164 is incorrect");
+            $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
+            $this->assertEquals("Invalid", $number->elevendigit, "The elevendigit value is incorrect");
+            $this->assertEquals("Invalid", $number->uri, "The uri value is incorrect");
+            $this->assertEquals("Invalid", $number->nationalFormat, "The nationalFormat value is incorrect");
+            $this->assertEquals("Invalid", $number->internationalFormat, "The internationalFormat value is incorrect");
+            $this->assertEquals("Invalid", $number->npa, "The npa value is incorrect");
+            $this->assertEquals("Invalid", $number->nxx, "The nxx value is incorrect");
+            $this->assertEquals("Invalid", $number->line, "The line value is incorrect");
+        }
+    }
+
     public function test12125550123()
     {
         $testNumbers = [

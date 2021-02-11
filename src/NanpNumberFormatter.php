@@ -2,6 +2,8 @@
 
 namespace Erichowey\NanpNumberFormatter;
 
+use function PHPUnit\Framework\isNull;
+
 class NanpNumberFormatter
 {
     public $errorMessage;
@@ -50,12 +52,19 @@ class NanpNumberFormatter
    * This takes a number of different nanp number inputs and returns
    * a variety of formatted nanp numbers.
    *
-   * @param string $number The phone number to be formatted
+   * @param mixed $number The phone number to be formatted
    * @param bool $wildcards
    * @return $this
    */
-    public function parse(string $number, bool $wildcards = false)
+    public function parse($number, bool $wildcards = false)
     {
+        // If $number is empty then return invalid
+        if (empty($number)) {
+            $this->isValid = false;
+            $this->errorMessage = "The number parameter is required";
+            return $this;
+        }
+
         // If the string is less then 10 characters
         if (strlen($number) < 10) {
             $this->isValid = false;
@@ -150,11 +159,11 @@ class NanpNumberFormatter
    * This takes a number of different nanp number inputs and returns
    * a variety of formatted nanp numbers.
    *
-   * @param string $number The phone number to be formatted
+   * @param mixed $number The phone number to be formatted
    * @param bool $wildcards
    * @return static
    */
-    public static function format(string $number, bool $wildcards = false)
+    public static function format($number, bool $wildcards = false)
     {
         $self = new static;
         $self->parse($number, $wildcards);
