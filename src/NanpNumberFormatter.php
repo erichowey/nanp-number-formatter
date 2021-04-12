@@ -12,6 +12,8 @@ class NanpNumberFormatter
     public $npa;
     public $nxx;
     public $line;
+    public $dotFormat;
+    public $hyphenFormat;
     public $nationalFormat;
     public $internationalFormat;
     public $tendigit;
@@ -27,6 +29,8 @@ class NanpNumberFormatter
         $this->npa = "Invalid";
         $this->nxx = "Invalid";
         $this->line = "Invalid";
+        $this->dotFormat = "Invalid";
+        $this->hyphenFormat = "Invalid";
         $this->nationalFormat = "Invalid";
         $this->internationalFormat = "Invalid";
         $this->tendigit = "Invalid";
@@ -146,6 +150,8 @@ class NanpNumberFormatter
         $this->npa = substr($number, 2, 3);
         $this->nxx = substr($number, 5, 3);
         $this->line = substr($number, 8, 4);
+        $this->dotFormat = $this->npa . "." . $this->nxx . "." . $this->line;
+        $this->hyphenFormat = $this->npa . "-" . $this->nxx . "-" . $this->line;
         $this->nationalFormat = "(" . $this->npa . ") " . $this->nxx . "-" . $this->line;
         $this->internationalFormat = "+1" . " " . $this->npa . " " . $this->nxx . " " . $this->line;
         $this->tendigit = $this->npa . $this->nxx . $this->line;

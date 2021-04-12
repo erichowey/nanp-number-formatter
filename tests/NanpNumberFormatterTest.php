@@ -25,6 +25,8 @@ class NanpNumberFormatterTest extends TestCase
             $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
             $this->assertEquals("Invalid", $number->elevendigit, "The elevendigit value is incorrect");
             $this->assertEquals("Invalid", $number->uri, "The uri value is incorrect");
+            $this->assertEquals("Invalid", $number->dotFormat, "The dotFormat is incorrect");
+            $this->assertEquals("Invalid", $number->hyphenFormat, "The hyphenFormat is incorrect");
             $this->assertEquals("Invalid", $number->nationalFormat, "The nationalFormat value is incorrect");
             $this->assertEquals("Invalid", $number->internationalFormat, "The internationalFormat value is incorrect");
             $this->assertEquals("Invalid", $number->npa, "The npa value is incorrect");
@@ -41,6 +43,8 @@ class NanpNumberFormatterTest extends TestCase
             '(212) 555-0123',
             '1 (212) 555-0123',
             '212.555.0123',
+            '212-555-0123',
+            '1-212-555-0123',
             '+1 (212) 555-0123',
             '+12125550123',
             '   1 (212) 555-0123  '
@@ -55,6 +59,8 @@ class NanpNumberFormatterTest extends TestCase
             $this->assertEquals("2125550123", $number->tendigit, "The tendigit value is incorrect");
             $this->assertEquals("12125550123", $number->elevendigit, "The elevendigit value is incorrect");
             $this->assertEquals("tel:+12125550123", $number->uri, "The uri value is incorrect");
+            $this->assertEquals("212.555.0123", $number->dotFormat, "The dotFormat is incorrect");
+            $this->assertEquals("212-555-0123", $number->hyphenFormat, "The hyphenFormat is incorrect");
             $this->assertEquals("(212) 555-0123", $number->nationalFormat, "The nationalFormat value is incorrect");
             $this->assertEquals("+1 212 555 0123", $number->internationalFormat, "The internationalFormat value is incorrect");
             $this->assertEquals("212", $number->npa, "The npa value is incorrect");
@@ -71,6 +77,8 @@ class NanpNumberFormatterTest extends TestCase
             '(800) 800-8000',
             '1 (800) 800-8000',
             '800.800.8000',
+            '800-800-8000',
+            '1-800-800-8000',
             '+1 (800) 800-8000',
             '+18008008000',
             '   1 (800) 800-8000  '
@@ -85,6 +93,8 @@ class NanpNumberFormatterTest extends TestCase
             $this->assertEquals("8008008000", $number->tendigit, "The tendigit value is incorrect");
             $this->assertEquals("18008008000", $number->elevendigit, "The elevendigit value is incorrect");
             $this->assertEquals("tel:+18008008000", $number->uri, "The uri value is incorrect");
+            $this->assertEquals("800.800.8000", $number->dotFormat, "The dotFormat is incorrect");
+            $this->assertEquals("800-800-8000", $number->hyphenFormat, "The hyphenFormat is incorrect");
             $this->assertEquals("(800) 800-8000", $number->nationalFormat, "The nationalFormat value is incorrect");
             $this->assertEquals("+1 800 800 8000", $number->internationalFormat, "The internationalFormat value is incorrect");
             $this->assertEquals("800", $number->npa, "The npa value is incorrect");
@@ -103,6 +113,8 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals("8003569377", $number->tendigit, "The tendigit value is incorrect");
         $this->assertEquals("18003569377", $number->elevendigit, "The elevendigit value is incorrect");
         $this->assertEquals("tel:+18003569377", $number->uri, "The uri value is incorrect");
+        $this->assertEquals("800.356.9377", $number->dotFormat, "The dotFormat is incorrect");
+        $this->assertEquals("800-356-9377", $number->hyphenFormat, "The hyphenFormat is incorrect");
         $this->assertEquals("(800) 356-9377", $number->nationalFormat, "The nationalFormat value is incorrect");
         $this->assertEquals("+1 800 356 9377", $number->internationalFormat, "The internationalFormat value is incorrect");
         $this->assertEquals("800", $number->npa, "The npa value is incorrect");
@@ -120,6 +132,8 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
         $this->assertEquals("Invalid", $number->elevendigit, "The elevendigit value is incorrect");
         $this->assertEquals("Invalid", $number->uri, "The uri value is incorrect");
+        $this->assertEquals("Invalid", $number->dotFormat, "The dotFormat is incorrect");
+        $this->assertEquals("Invalid", $number->hyphenFormat, "The hyphenFormat is incorrect");
         $this->assertEquals("Invalid", $number->nationalFormat, "The nationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->internationalFormat, "The internationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->npa, "The npa value is incorrect");
@@ -138,6 +152,8 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
         $this->assertEquals("Invalid", $number->elevendigit, "The elevendigit value is incorrect");
         $this->assertEquals("Invalid", $number->uri, "The uri value is incorrect");
+        $this->assertEquals("Invalid", $number->dotFormat, "The dotFormat is incorrect");
+        $this->assertEquals("Invalid", $number->hyphenFormat, "The hyphenFormat is incorrect");
         $this->assertEquals("Invalid", $number->nationalFormat, "The nationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->internationalFormat, "The internationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->npa, "The npa value is incorrect");
@@ -155,6 +171,8 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
         $this->assertEquals("Invalid", $number->elevendigit, "The elevendigit value is incorrect");
         $this->assertEquals("Invalid", $number->uri, "The uri value is incorrect");
+        $this->assertEquals("Invalid", $number->dotFormat, "The dotFormat is incorrect");
+        $this->assertEquals("Invalid", $number->hyphenFormat, "The hyphenFormat is incorrect");
         $this->assertEquals("Invalid", $number->nationalFormat, "The nationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->internationalFormat, "The internationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->npa, "The npa value is incorrect");
@@ -172,6 +190,8 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
         $this->assertEquals("Invalid", $number->elevendigit, "The elevendigit value is incorrect");
         $this->assertEquals("Invalid", $number->uri, "The uri value is incorrect");
+        $this->assertEquals("Invalid", $number->dotFormat, "The dotFormat is incorrect");
+        $this->assertEquals("Invalid", $number->hyphenFormat, "The hyphenFormat is incorrect");
         $this->assertEquals("Invalid", $number->nationalFormat, "The nationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->internationalFormat, "The internationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->npa, "The npa value is incorrect");
@@ -189,6 +209,8 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
         $this->assertEquals("Invalid", $number->elevendigit, "The elevendigit value is incorrect");
         $this->assertEquals("Invalid", $number->uri, "The uri value is incorrect");
+        $this->assertEquals("Invalid", $number->dotFormat, "The dotFormat is incorrect");
+        $this->assertEquals("Invalid", $number->hyphenFormat, "The hyphenFormat is incorrect");
         $this->assertEquals("Invalid", $number->nationalFormat, "The nationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->internationalFormat, "The internationalFormat value is incorrect");
         $this->assertEquals("Invalid", $number->npa, "The npa value is incorrect");
@@ -198,35 +220,39 @@ class NanpNumberFormatterTest extends TestCase
 
     public function testWildCardWithFlagFalse()
     {
-      $number = NanpNumberFormatter::format("(212) - 555 01**");
-      $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
-      $this->assertEquals("(212) - 555 01** contains invalid characters", $number->errorMessage, "errorMessage is incorrect");
-      $this->assertEquals(false, $number->isValid, "isValid is not false for an invalid number");
-      $this->assertEquals("Invalid", $number->e164, "e164 is incorrect");
-      $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
-      $this->assertEquals("Invalid", $number->elevendigit, "The elevendigit value is incorrect");
-      $this->assertEquals("Invalid", $number->uri, "The uri value is incorrect");
-      $this->assertEquals("Invalid", $number->nationalFormat, "The nationalFormat value is incorrect");
-      $this->assertEquals("Invalid", $number->internationalFormat, "The internationalFormat value is incorrect");
-      $this->assertEquals("Invalid", $number->npa, "The npa value is incorrect");
-      $this->assertEquals("Invalid", $number->nxx, "The nxx value is incorrect");
-      $this->assertEquals("Invalid", $number->line, "The line value is incorrect");
+        $number = NanpNumberFormatter::format("(212) - 555 01**");
+        $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
+        $this->assertEquals("(212) - 555 01** contains invalid characters", $number->errorMessage, "errorMessage is incorrect");
+        $this->assertEquals(false, $number->isValid, "isValid is not false for an invalid number");
+        $this->assertEquals("Invalid", $number->e164, "e164 is incorrect");
+        $this->assertEquals("Invalid", $number->tendigit, "The tendigit value is incorrect");
+        $this->assertEquals("Invalid", $number->elevendigit, "The elevendigit value is incorrect");
+        $this->assertEquals("Invalid", $number->uri, "The uri value is incorrect");
+        $this->assertEquals("Invalid", $number->dotFormat, "The dotFormat is incorrect");
+        $this->assertEquals("Invalid", $number->hyphenFormat, "The hyphenFormat is incorrect");
+        $this->assertEquals("Invalid", $number->nationalFormat, "The nationalFormat value is incorrect");
+        $this->assertEquals("Invalid", $number->internationalFormat, "The internationalFormat value is incorrect");
+        $this->assertEquals("Invalid", $number->npa, "The npa value is incorrect");
+        $this->assertEquals("Invalid", $number->nxx, "The nxx value is incorrect");
+        $this->assertEquals("Invalid", $number->line, "The line value is incorrect");
     }
 
     public function testWildCards()
     {
-      $number = NanpNumberFormatter::format("(212) - 555 01**", true);
-      $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
-      $this->assertEquals("", $number->errorMessage, "errorMessage is incorrect");
-      $this->assertEquals(true, $number->isValid, "isValid is not true for a valid number");
-      $this->assertEquals("+121255501**", $number->e164, "e164 is incorrect");
-      $this->assertEquals("21255501**", $number->tendigit, "The tendigit value is incorrect");
-      $this->assertEquals("121255501**", $number->elevendigit, "The elevendigit value is incorrect");
-      $this->assertEquals("tel:+121255501**", $number->uri, "The uri value is incorrect");
-      $this->assertEquals("(212) 555-01**", $number->nationalFormat, "The nationalFormat value is incorrect");
-      $this->assertEquals("+1 212 555 01**", $number->internationalFormat, "The internationalFormat value is incorrect");
-      $this->assertEquals("212", $number->npa, "The npa value is incorrect");
-      $this->assertEquals("555", $number->nxx, "The nxx value is incorrect");
-      $this->assertEquals("01**", $number->line, "The line value is incorrect");
+        $number = NanpNumberFormatter::format("(212) - 555 01**", true);
+        $this->assertNotEmpty($number, "Formatter returned nothing when it should have returned an object");
+        $this->assertEquals("", $number->errorMessage, "errorMessage is incorrect");
+        $this->assertEquals(true, $number->isValid, "isValid is not true for a valid number");
+        $this->assertEquals("+121255501**", $number->e164, "e164 is incorrect");
+        $this->assertEquals("21255501**", $number->tendigit, "The tendigit value is incorrect");
+        $this->assertEquals("121255501**", $number->elevendigit, "The elevendigit value is incorrect");
+        $this->assertEquals("tel:+121255501**", $number->uri, "The uri value is incorrect");
+        $this->assertEquals("212.555.01**", $number->dotFormat, "The dotFormat is incorrect");
+        $this->assertEquals("212-555-01**", $number->hyphenFormat, "The hyphenFormat is incorrect");
+        $this->assertEquals("(212) 555-01**", $number->nationalFormat, "The nationalFormat value is incorrect");
+        $this->assertEquals("+1 212 555 01**", $number->internationalFormat, "The internationalFormat value is incorrect");
+        $this->assertEquals("212", $number->npa, "The npa value is incorrect");
+        $this->assertEquals("555", $number->nxx, "The nxx value is incorrect");
+        $this->assertEquals("01**", $number->line, "The line value is incorrect");
     }
 }

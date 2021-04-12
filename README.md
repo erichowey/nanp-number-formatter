@@ -13,6 +13,7 @@ You can install this package via composer
 - E.164 `+12125550123`
 - Parenthesis `(212) 555-0123`
 - Dot `212.555.0123`
+- Hyphen `212-555-0123`
 - Space `212 555 0123`
 - Letters `1800FLOWERS`
 
@@ -20,6 +21,8 @@ etc...
 
 ## Outputted Formats
 - E.164 `+12125550123`
+- Dot Format `212.555.0123`
+- Hyphen Format `212-555-0123`
 - National Format `(212) 555-0123`
 - International Format `+1 212 555 0123`
 - 10 Digit `2125550123`
@@ -38,6 +41,8 @@ $number = NanpNumberFormatter::format("(212) 555-0123");
 echo $number->e164; // +12125550123
 echo $number->nationalFormat; // (212) 555-0123
 echo $number->internationalFormat; // +1 212 555 0123
+echo $number->dotFormat; // 212.555.0123
+echo $number->hyphenFormat; // 212-555-0123
 echo $number->tendigit; // 2125550123
 echo $number->elevendigit; // 12125550123
 echo $number->uri; // tel:+12125550123
