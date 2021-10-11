@@ -17,14 +17,14 @@
     }
   ],
   "require": {
-    "php" : "^7.2 || ^8.0"
+    "php" : "^7.4 || ^8.0"
   },
   "require-dev": {
-    "phpunit/phpunit" : "^8.0 || ^9.0"
+    "phpunit/phpunit" : "^9.0"
   },
   "autoload": {
     "psr-4": {
-      "Erichowey\\NanpNumberFormatter\\": "src"
+      "Erichowey\\NanpNumberFormatter\\": ["src", "exceptions"]
     }
   },
   "autoload-dev": {
