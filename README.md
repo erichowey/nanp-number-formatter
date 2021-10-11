@@ -62,9 +62,15 @@ $number = NanpNumberFormatter::format("(212) 555-****", true);
 ```
 
 ## Errors
-The `NanpNumberFormatter` object has the following parameters: `(bool) isValid` and `(string) errorMessage`. This tool 
-does not throw exceptions, however, the `isValid` parameter will be `false` if it determines that the given number 
-is invalid.
+If an invalid or non nanp number is attempted to be formatted, a `NanpNumberFormatterException` will be thrown. They can
+be handled with the typical try/catch pattern:
+```php
+try {
+    $number = NanpNumberFormatter::format("1234");
+} catch (NanpNumberFormatterException $e) {
+    echo $e->getMessage(); // 1234 is less than 10 characters
+}
+```
 
 ## Contributing
 Contributions are welcome. Criticism is even more welcome. You're welcome to submit a PR or open an issue. Please 
