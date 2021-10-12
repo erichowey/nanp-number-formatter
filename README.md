@@ -24,6 +24,7 @@ etc...
 - Dot Format `212.555.0123`
 - Hyphen Format `212-555-0123`
 - National Format `(212) 555-0123`
+- National Format Plus One `1 (212) 555-0123`
 - International Format `+1 212 555 0123`
 - 10 Digit `2125550123`
 - 11 Digit `12325550123`
@@ -40,6 +41,7 @@ $number = NanpNumberFormatter::format("(212) 555-0123");
 
 echo $number->e164; // +12125550123
 echo $number->nationalFormat; // (212) 555-0123
+echo $number->nationalFormatPlusOne; // 1 (212) 555-0123
 echo $number->internationalFormat; // +1 212 555 0123
 echo $number->dotFormat; // 212.555.0123
 echo $number->hyphenFormat; // 212-555-0123
@@ -62,9 +64,15 @@ $number = NanpNumberFormatter::format("(212) 555-****", true);
 ```
 
 ## Errors
-The `NanpNumberFormatter` object has the following parameters: `(bool) isValid` and `(string) errorMessage`. This tool 
-does not throw exceptions, however, the `isValid` parameter will be `false` if it determines that the given number 
-is invalid.
+If an invalid or non nanp number is attempted to be formatted, a `NanpNumberFormatterException` will be thrown. They can
+be handled with the typical try/catch pattern:
+```php
+try {
+    $number = NanpNumberFormatter::format("1234");
+} catch (NanpNumberFormatterException $e) {
+    echo $e->getMessage(); // 1234 is less than 10 characters
+}
+```
 
 ## Contributing
 Contributions are welcome. Criticism is even more welcome. You're welcome to submit a PR or open an issue. Please 
