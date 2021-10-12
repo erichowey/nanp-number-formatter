@@ -24,6 +24,7 @@ etc...
 - Dot Format `212.555.0123`
 - Hyphen Format `212-555-0123`
 - National Format `(212) 555-0123`
+- National Format Plus One `1 (212) 555-0123`
 - International Format `+1 212 555 0123`
 - 10 Digit `2125550123`
 - 11 Digit `12325550123`
@@ -40,6 +41,7 @@ $number = NanpNumberFormatter::format("(212) 555-0123");
 
 echo $number->e164; // +12125550123
 echo $number->nationalFormat; // (212) 555-0123
+echo $number->nationalFormatPlusOne; // 1 (212) 555-0123
 echo $number->internationalFormat; // +1 212 555 0123
 echo $number->dotFormat; // 212.555.0123
 echo $number->hyphenFormat; // 212-555-0123

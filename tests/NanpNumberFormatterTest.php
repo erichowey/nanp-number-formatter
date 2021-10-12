@@ -48,6 +48,7 @@ class NanpNumberFormatterTest extends TestCase
             $this->assertEquals('212.555.0123', $number->dotFormat, 'The dotFormat is incorrect');
             $this->assertEquals('212-555-0123', $number->hyphenFormat, 'The hyphenFormat is incorrect');
             $this->assertEquals('(212) 555-0123', $number->nationalFormat, 'The nationalFormat value is incorrect');
+            $this->assertEquals('1 (212) 555-0123', $number->nationalFormatPlusOne, 'The nationalFormatPlusOne value is incorrect');
             $this->assertEquals('+1 212 555 0123', $number->internationalFormat, 'The internationalFormat value is incorrect');
             $this->assertEquals('212', $number->npa, 'The npa value is incorrect');
             $this->assertEquals('555', $number->nxx, 'The nxx value is incorrect');
@@ -81,6 +82,7 @@ class NanpNumberFormatterTest extends TestCase
             $this->assertEquals('800.800.8000', $number->dotFormat, 'The dotFormat is incorrect');
             $this->assertEquals('800-800-8000', $number->hyphenFormat, 'The hyphenFormat is incorrect');
             $this->assertEquals('(800) 800-8000', $number->nationalFormat, 'The nationalFormat value is incorrect');
+            $this->assertEquals('1 (800) 800-8000', $number->nationalFormatPlusOne, 'The nationalFormatPlusOne value is incorrect');
             $this->assertEquals('+1 800 800 8000', $number->internationalFormat, 'The internationalFormat value is incorrect');
             $this->assertEquals('800', $number->npa, 'The npa value is incorrect');
             $this->assertEquals('800', $number->nxx, 'The nxx value is incorrect');
@@ -100,6 +102,7 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals('800.356.9377', $number->dotFormat, 'The dotFormat is incorrect');
         $this->assertEquals('800-356-9377', $number->hyphenFormat, 'The hyphenFormat is incorrect');
         $this->assertEquals('(800) 356-9377', $number->nationalFormat, 'The nationalFormat value is incorrect');
+        $this->assertEquals('1 (800) 356-9377', $number->nationalFormatPlusOne, 'The nationalFormatPlusOne value is incorrect');
         $this->assertEquals('+1 800 356 9377', $number->internationalFormat, 'The internationalFormat value is incorrect');
         $this->assertEquals('800', $number->npa, 'The npa value is incorrect');
         $this->assertEquals('356', $number->nxx, 'The nxx value is incorrect');
@@ -169,6 +172,7 @@ class NanpNumberFormatterTest extends TestCase
         $this->assertEquals('212.555.01**', $number->dotFormat, 'The dotFormat is incorrect');
         $this->assertEquals('212-555-01**', $number->hyphenFormat, 'The hyphenFormat is incorrect');
         $this->assertEquals('(212) 555-01**', $number->nationalFormat, 'The nationalFormat value is incorrect');
+        $this->assertEquals('1 (212) 555-01**', $number->nationalFormatPlusOne, 'The nationalFormatPlusOne value is incorrect');
         $this->assertEquals('+1 212 555 01**', $number->internationalFormat, 'The internationalFormat value is incorrect');
         $this->assertEquals('212', $number->npa, 'The npa value is incorrect');
         $this->assertEquals('555', $number->nxx, 'The nxx value is incorrect');
